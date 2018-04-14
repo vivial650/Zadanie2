@@ -7,6 +7,9 @@ import javax.swing.SwingUtilities;
 
 public class TitlesFrame
 extends JFrame {
+    /**
+	 * описание отображения приложения
+	 */
     public TitlesFrame() {
         this.initUI();
     }
