@@ -24,7 +24,9 @@ implements ActionListener {
     private boolean is_done = true;
     private int start_angle = 0;
     private int shape;
-
+    /**
+     * анимация фигур
+     */
     public TitlesPanel(int _shape) {
         this.shape = _shape;
         this.animation = new Timer(50, this);
