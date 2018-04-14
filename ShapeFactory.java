@@ -13,6 +13,12 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class ShapeFactory {
+    /**
+     * формирование фигур и их параметров
+     * при делении параметра на 10
+     * целая часть результата определяет форму фигуры
+     * остаток от деления определяет характеристики фигур
+     */
     public Shape shape;
     public BasicStroke stroke = new BasicStroke(3.0f);
     public Paint paint;
