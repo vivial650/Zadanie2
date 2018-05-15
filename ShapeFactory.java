@@ -24,6 +24,76 @@ public class ShapeFactory {
     public Paint paint;
     public int width = 25;
     public int height = 25;
+    
+     /**
+     * Добавлен конструктор. Принимает 2 объекта
+     * @param type
+     * @param attr
+     */
+    public ShapeFactory(TitlesFrame.ShapeTypes type,TitlesFrame.ShapeAttribute attr){
+    	
+    	switch (type){
+    	case STAR_3ARMS:{
+    		
+    		this.shape = ShapeFactory.createStar(3, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 2.0);
+            break;
+    	}
+    	
+    	case STAR_5ARMS:{
+    		 this.shape = ShapeFactory.createStar(5, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 4.0);
+             break;    		
+    	}
+    	case RECTANGLE:{
+    		this.shape = new Rectangle2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height);
+            break;
+    	}
+    	case TRIANGLE:{
+    		 GeneralPath path = new GeneralPath();
+             double tmp_height = Math.sqrt(2.0) / 2.0 * (double)this.height;
+             path.moveTo((double)((- this.width) / 2), - tmp_height);
+             path.lineTo(0.0, - tmp_height);
+             path.lineTo((double)(this.width / 2), tmp_height);
+             path.closePath();
+             this.shape = path;
+             break;
+    	}
+    	case CIRCLE:{
+    		 this.shape = new Arc2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height, 30.0, 300.0, 2);
+             break;
+    	}
+    	 default: {
+             throw new Error("type is unsupported");
+    	}
+    }
+    switch(attr){
+    	case STROKE_3:{
+    		this.stroke = new BasicStroke(3.0f);
+            break;
+    	}
+    	case STROKE_7:{
+    		 this.stroke = new BasicStroke(7.0f);
+             break;
+    	}
+    	case  GRADIENT:{
+    		this.paint = new GradientPaint(- this.width, - this.height, Color.white, this.width, this.height, Color.gray, true);
+            break;
+    	}
+    	case COLOR_RED:{
+    		this.paint = Color.red;
+            break;
+    	}
+    	case NO_ATTRIBUTE:{
+    		 break;
+    	}
+    	default: {
+            throw new Error("type is unsupported");
+    	}
+    }
+    }
+    /**
+     * Первоначальный  конструктор. Принимает один целочисленный параметр
+     * @param shape_type
+     */
 
     public ShapeFactory(int shape_type) {
         switch (shape_type / 10) {
