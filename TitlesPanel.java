@@ -33,6 +33,19 @@ implements ActionListener {
         this.animation.setInitialDelay(50);
         this.animation.start();
     }
+    
+     TitlesFrame.ShapeTypes type;        // добавлено
+     TitlesFrame.ShapeAttribute attr;    // добавлено
+   
+   public TitlesPanel(TitlesFrame.ShapeTypes type,TitlesFrame.ShapeAttribute attr){ //добавлен конструктор
+	   
+	  
+	   this.type = type;
+	   this.attr = attr;
+	   this.animation = new Timer(50, this);
+       this.animation.setInitialDelay(50);
+       this.animation.start();
+   }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
@@ -49,7 +62,8 @@ implements ActionListener {
         Insets insets = this.getInsets();
         int w = size.width - insets.left - insets.right;
         int h = size.height - insets.top - insets.bottom;
-        ShapeFactory shape = new ShapeFactory(this.shape);
+        //ShapeFactory shape = new ShapeFactory(this.shape);
+         ShapeFactory shape = new ShapeFactory(this.type, this.attr); //добавлено
         this.g2d.setStroke(shape.stroke);
         this.g2d.setPaint(shape.paint);
         double angle = this.start_angle++;
